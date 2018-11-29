@@ -134,8 +134,8 @@ Hamburger.prototype.getPrice = function () {
 }
 
 Hamburger.prototype.getKk = function () {
-    var a = calculate(this._size.kk,'price'); 
-    var b = calculate(this._stuffing.kk,'price'); 
+    var a = calculate(this._size.kk,'kk'); 
+    var b = calculate(this._stuffing.kk,'kk'); 
     var c = calculate(this._toppings,'kk'); 
     var kk = a+b+c;
     return kk;
@@ -163,18 +163,6 @@ Hamburger.prototype.removeTopping = function (newTopping) {
     console.log('Такого топпинга вообще нет');
     return false;
 }
-
-// Hamburger.prototype.calculate = function (arr,k) {
-//     var endsumm = 0; var t = 0;
-//     for (var i = 0; i < arr.length; i++) {
-//         if (arr[i].hasOwnProperty(k)){
-//         endsumm = (arr[i][k])+t;
-//         t = endsumm;
-//         } 
-//     }
-//     return endsumm;
-// }
-
 
 
 var burger1 = new Hamburger(SIZE_LARGE, STUFFING_CHEESE);
