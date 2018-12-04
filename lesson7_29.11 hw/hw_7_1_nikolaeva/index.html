@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Home Work 7 Nikolaeva Vlada</title>
+
+</head>
+<body>
+
+    <fieldset>
+        <legend> Соберите свой гамбургер: </legend>
+        
+        <div id = "burgerSize"> <h4>1. Размер булки: </h4>
+        	<label>
+        		<input type="radio"
+        			 	name="size" 
+        			 	id="small" checked>
+        				Булка малого размера (Цена: 50 ye, Энергетическая ценность: 20 Кк);
+        	</label>
+        	<br>
+        	<br>
+        	<label>
+        		<input type="radio"
+        			name="size"
+        			id="large">
+        			Булка большого размера (Цена: 100 ye, Энергетическая ценность: 40 Кк);
+        	</label>
+        </div>
+		<br>
+        <div id = "nachinka"> <h4>2. Начинка для гамбургера: </h4>
+        	<p><label>
+        			<input type="radio"
+        					name="stuffing"
+        					id="cheese" checked>
+        		 			1. Сыр (Цена: 10 ye, Энергетическая ценность: 20 Кк);
+        		</label>
+        	</p>
+        
+            <p><label>
+        			<input type="radio"
+        					name="stuffing"
+        					id="potato">
+        		 			2. Картофель фрии (Цена: 15 ye, Энергетическая ценность: 10 Кк);
+        		</label>
+        	</p>
+
+			<p><label>
+        			<input type="radio"
+        					name="stuffing"
+        					id="salad">
+        					2. Салат (Цена: 20 ye, Энергетическая ценность: 5 Кк);
+        		</label>
+        	</p>
+        </div>
+		<br>
+		<div id = "topping"> <h4>3. Топпинг: </h4>
+        	<p><label>
+        			<input type="checkbox"
+        					name="topping"
+        					value="TOPPING_SPICE" checked>
+        					Специи (Цена: 15 ye, Энергетическая ценность: 0 Кк);
+        		</label>
+        	</p>
+            <p><label>
+        			<input type="checkbox"
+        					name="topping"
+        					value="TOPPING_MAYO">
+        					Майонез (Цена: 20 ye, Энергетическая ценность: 5 Кк);
+        		</label>
+        	</p>
+        </div>
+		<br>
+		<div class="area" id="area"></div>
+    	<div >
+        	<button id ="burgerValue">Подтвердить</button>
+        	<h4>Итоговая стоимость гамбургера: <span id = "burgerPrice"></span><span>    грн</span></h4>
+        	
+        	<h4>Энергетическая ценность гамбургера: <span id = "burgerEnergy"></span><span>   ккал</span></h4>
+        	
+    	</div>
+    </fieldset>
+
+    <script src="main_hw7.js"></script>
+</body>
+
+</html>

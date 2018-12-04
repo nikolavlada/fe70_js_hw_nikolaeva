@@ -1,55 +1,5 @@
-// var Vehicle = {
-//     engine: function () {
-//         return 'ПОЕХАЛИИ! ' + this.model;
-//     }
-// }
 
-// var Car = function (mark, model) {
-//     this.mark = mark;
-//     this.model = model;
-// }
-
-// Car.prototype.engine = function () {
-//     return 'ПОЕХАЛИИ! ' + this.model;
-// }
-
-// var car1 = new Car('Audi', 'rs6');
-// var car2 = new Car('BMW', 'm5');
-
-// console.log(car1);
-// console.log(car1.mark);
-// console.log(car1.engine());
-// console.log(car2.engine());
-
-
-// var animal = {
-//     breath: true
-// }
-
-// var tiger = {
-//     eatOtherAnimals: true
-// }
-
-// tiger.__proto__ = animal;
-
-// console.log(tiger);
-// console.log(tiger.breath);
-
-
-// var Header = (function () {
-//     var x = 10;
-//     var y = 20;
-//     var z = function () {
-//         return '!!!';
-//     }
-//     return {
-//         toggleType: function () {
-//             console.log(z());
-//         }
-//     }
-// }())
-// Header.toggleType();
-
+// В данном решении с Топингами беда :(
 
 var compareObjects = function (o1, o2, key) {
     if (!key) key = 'name';
@@ -124,7 +74,7 @@ Hamburger.prototype.getToppings = function () {
     return this._toppings;
 }
 
-// **Vlada* Добавила для подсчета цены и ккаллорий
+//**Vlada* Добавила для подсчета цены и ккаллорий
 Hamburger.prototype.getPrice = function () {
     var a = this._size.price; 
     var b = this._stuffing.price; 
@@ -140,7 +90,6 @@ Hamburger.prototype.getKk = function () {
     var kk = a+b+c;
     return kk;
 }
-//********
 
 Hamburger.prototype.addTopping = function (newTopping) {
     for (var i = 0; i < this._toppings.length; i++) {
@@ -164,21 +113,42 @@ Hamburger.prototype.removeTopping = function (newTopping) {
     return false;
 }
 
+//*************************
 
-var burger1 = new Hamburger(SIZE_LARGE, STUFFING_CHEESE);
-console.log(burger1.getSize());
-console.log(burger1.getStuffing());
-console.log('______________');
-console.log(burger1.addTopping(TOPPING_MAYO));
-console.log(burger1.addTopping(TOPPING_MAYO));
-console.log(burger1.addTopping(TOPPING_SPICE));
-console.log(burger1.getToppings());
-console.log(burger1.removeTopping(TOPPING_SPICE));
-console.log(burger1.removeTopping(TOPPING_SPICE));
-console.log(burger1.getToppings());
-console.log('______________');
-console.log(burger1.addTopping(TOPPING_MAYO));
-console.log(burger1.addTopping(TOPPING_SPICE));
-console.log(burger1.getToppings());
-console.log(burger1.getPrice());
-console.log(burger1.getKk());
+document.getElementById('burgerValue').onclick = function getBurgerValue (){
+document.getElementById('burgerPrice').innerHTML = '';
+document.getElementById('burgerEnergy').innerHTML = '';
+var size;
+var stuffing;
+var topping = [];
+
+
+if(document.getElementById('small').checked == true){size = SIZE_SMALL; console.log(size);}
+else{}
+if(document.getElementById('large').checked == true){size = SIZE_LARGE; console.log(size);}
+else{}
+if(document.getElementById('cheese').checked == true) {stuffing = STUFFING_CHEESE;console.log(stuffing);}
+else{}
+if(document.getElementById('potato').checked == true) {stuffing = STUFFING_POTATO;console.log(stuffing);}
+else{}
+if(document.getElementById('salad').checked == true){stuffing = STUFFING_SALAD;console.log(stuffing);}
+else{}
+    var burger = new Hamburger(size,stuffing);
+console.log(burger.getSize());
+console.log(burger.getStuffing());
+
+var Top = document.getElementById('topping').getElementsByTagName('input');
+for (i = 0; i < Top.length; i++){
+    if (Top[i].checked == true){
+        var newTopping = Top[i];
+        console.log(newTopping);
+    burger.addTopping(newTopping);
+    console.log(burger.addTopping(newTopping));
+    }
+}
+burger.getToppings();
+console.log(burger.getPrice());
+console.log(burger.getKk());
+document.getElementById('burgerPrice').innerHTML = burger.getPrice();
+document.getElementById('burgerEnergy').innerHTML = burger.getKk();
+}
