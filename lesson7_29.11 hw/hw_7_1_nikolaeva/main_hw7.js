@@ -1,5 +1,6 @@
 
-// В данном решении с Топингами беда :(
+// В данном решении цена и Кк считаются верно во всех трех составляющих.
+// Но при добавлении Топинга проверка выводит, что такой Топинг уже есть (это видно в консоле:( ) 
 
 var compareObjects = function (o1, o2, key) {
     if (!key) key = 'name';
@@ -29,31 +30,31 @@ var SIZE_LARGE = {
     price: 100,
     kk: 40
 };
-var STUFFING_CHEESE = {
+var STUFFING = [{
     name: 'cheese',
     price: 10,
     kk: 20
-};
-var STUFFING_POTATO = {
+},
+{
     name: 'potato',
     price: 15,
     kk: 10
-};
-var STUFFING_SALAD = {
+},
+{
     name: 'salad',
     price: 20,
     kk: 5
-};
-var TOPPING_SPICE = {
-    name: 'spice',
+}]
+var TOPPING = [{
+    name: 'TOPPING_SPICE',
     price: 15,
     kk: 0
-};
-var TOPPING_MAYO = {
-    name: 'mayo',
+},
+{
+    name: 'TOPPING_MAYO',
     price: 20,
     kk: 5
-};
+}]
 // !!!!!!!!!
 
 var Hamburger = function (size, stuffing) {
@@ -127,25 +128,34 @@ if(document.getElementById('small').checked == true){size = SIZE_SMALL; console.
 else{}
 if(document.getElementById('large').checked == true){size = SIZE_LARGE; console.log(size);}
 else{}
-if(document.getElementById('cheese').checked == true) {stuffing = STUFFING_CHEESE;console.log(stuffing);}
-else{}
-if(document.getElementById('potato').checked == true) {stuffing = STUFFING_POTATO;console.log(stuffing);}
-else{}
-if(document.getElementById('salad').checked == true){stuffing = STUFFING_SALAD;console.log(stuffing);}
-else{}
-    var burger = new Hamburger(size,stuffing);
+
+stuffing = document.querySelectorAll('input[name="stuffing"]'); 
+for(var i=0;i<stuffing.length;i++){
+    if(stuffing[i].checked == true){
+        stuffing = STUFFING[i];
+    } 
+}
+
+var burger = new Hamburger(size,stuffing);
 console.log(burger.getSize());
 console.log(burger.getStuffing());
 
-var Top = document.getElementById('topping').getElementsByTagName('input');
+var Top = document.getElementsByClassName('topping');
+
 for (i = 0; i < Top.length; i++){
     if (Top[i].checked == true){
-        var newTopping = Top[i];
-        console.log(newTopping);
-    burger.addTopping(newTopping);
-    console.log(burger.addTopping(newTopping));
+        for (var j =0; j<TOPPING.length;j++){
+            if (Top[i].value == TOPPING[j].name){
+                var newTopping = TOPPING[j];
+                 console.log(newTopping);
+
+                 burger.addTopping(newTopping);
+                console.log(burger.addTopping(newTopping));
+            }   
+        }
     }
 }
+
 burger.getToppings();
 console.log(burger.getPrice());
 console.log(burger.getKk());
